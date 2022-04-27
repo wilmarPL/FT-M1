@@ -7,6 +7,11 @@ function counter() {
   // ejemplo: const newCounter = counter();
   // newCounter(); // 1
   // newCounter(); // 2
+  let sp = 0;
+  return function aumentar(){
+    sp++;
+    return sp;
+  }
 }
 
 function cacheFunction(cb) {
@@ -21,7 +26,20 @@ function cacheFunction(cb) {
   // si la invocas de nuevo con 5, deberia retornar 25 (guardado previament en el cache)
   // Tips, usá un objeto donde cada propiedad sea un argumento, y el valor el resultado.
   // usá hasOwnProperty!
+return function(a){
+  var cache = {};
+    if(cache.hasOwnProperty(a)){
+      return cache.a;
+    }
+   cb(a);
+   var resultado = cb(a)
+   cache.a = resultado;
+   return resultado
+  }
+
 }
+
+
 
 // Bind
 
@@ -29,6 +47,12 @@ var instructor = {
   nombre: "Franco",
   edad: 25
 }
+if(true){
+  var instructor ="Franco";
+  console.log(instructor);
+}
+
+
 
 var alumno = {
   nombre: "Juan",
